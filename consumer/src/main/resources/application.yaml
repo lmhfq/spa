@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: demo-consumer # Spring 应用名
+  cloud:
+    nacos:
+      # Nacos 作为注册中心的配置项，对应 NacosDiscoveryProperties 配置类
+      discovery:
+        server-addr: 118.24.149.206:8848 # Nacos 服务器地址
+    stream:
+      bindings:
+        input:
+          destination: greetings
+
+
+
+  rabbitmq:
+    host: 118.178.106.224
+    port: 5672
+    username: java
+    password: m91byqJarBhYeq0j
+    virtual-host: java_pay
+
+server:
+  port: 28080 # 服务器端口。默认为 8080
