@@ -10,7 +10,7 @@ spring:
       # Nacos 作为注册中心的配置项，对应 NacosDiscoveryProperties 配置类
       discovery:
         server-addr: 118.24.149.206:8848 # Nacos 服务器地址
-        service: ${spring.application.name} # 注册到 Nacos 的服务名。默认值为 ${spring.application.name}。
+
 
 
   rabbitmq:
@@ -25,7 +25,7 @@ spring:
 # Dubbo 配置项，对应 DubboConfigurationProperties 类
 dubbo:
   scan:
-    base-packages: com.lmh.spa.provider.service.impl; # 指定 Dubbo 服务实现类的扫描基准包
+    base-packages: com.lmh.spa.provider.service.impl # 指定 Dubbo 服务实现类的扫描基准包
   # Dubbo 服务暴露的协议配置，对应 ProtocolConfig Map
   protocols:
     dubbo:

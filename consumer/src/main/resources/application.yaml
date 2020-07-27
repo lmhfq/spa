@@ -10,6 +10,7 @@ spring:
       # Nacos 作为注册中心的配置项，对应 NacosDiscoveryProperties 配置类
       discovery:
         server-addr: 118.24.149.206:8848 # Nacos 服务器地址
+
     stream:
       bindings:
         input:
@@ -23,7 +24,6 @@ spring:
     username: java
     password: m91byqJarBhYeq0j
     virtual-host: java_pay
-
 
 
 
