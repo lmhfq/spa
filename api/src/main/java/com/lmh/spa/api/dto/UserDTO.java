@@ -7,8 +7,12 @@ import java.io.Serializable;
 
 @Setter
 @Getter
-public class UserAddDTO implements Serializable {
+public class UserDTO implements Serializable {
 
+    /**
+     * 用户编号
+     */
+    private Integer id;
     /**
      * 昵称
      */
@@ -17,6 +21,4 @@ public class UserAddDTO implements Serializable {
      * 性别
      */
     private Integer gender;
-
-
 }
