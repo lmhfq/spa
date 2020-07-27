@@ -1,4 +1,4 @@
-package com.lmh.spa.provider.service;
+package com.lmh.spa.api.service;
 
 import com.lmh.spa.api.dto.UserAddDTO;
 import com.lmh.spa.api.dto.UserDTO;

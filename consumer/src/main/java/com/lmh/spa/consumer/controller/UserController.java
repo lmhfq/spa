@@ -2,7 +2,7 @@ package com.lmh.spa.consumer.controller;
 
 import com.lmh.spa.api.dto.UserAddDTO;
 import com.lmh.spa.api.dto.UserDTO;
-import com.lmh.spa.provider.service.UserService;
+import com.lmh.spa.api.service.UserService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
 

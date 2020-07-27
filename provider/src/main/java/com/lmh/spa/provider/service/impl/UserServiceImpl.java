@@ -2,7 +2,7 @@ package com.lmh.spa.provider.service.impl;
 
 import com.lmh.spa.api.dto.UserAddDTO;
 import com.lmh.spa.api.dto.UserDTO;
-import com.lmh.spa.provider.service.UserService;
+import com.lmh.spa.api.service.UserService;
 
 @org.apache.dubbo.config.annotation.Service(protocol = "dubbo", version = "1.0.0")
 public class UserServiceImpl implements UserService {
