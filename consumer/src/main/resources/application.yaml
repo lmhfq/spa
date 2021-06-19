@@ -13,8 +13,32 @@ spring:
 
     stream:
       bindings:
-        input:
-          destination: greetings
+        #        input:
+        #          destination: greetings
+
+        example-topic-input:
+          destination: delay-topic
+          group: test
+          consumer:
+            max-attempts: 1
+
+        example-topic-output:
+          destination: delay-topic
+
+
+      rabbit:
+        bindings:
+          example-topic-input:
+            consumer:
+              #       delayed-exchange: true
+              requeue-rejected: true
+
+  #          example-topic-output:
+  #            producer:
+  #              delayed-exchange: true
+
+
+
 
 
 

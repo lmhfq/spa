@@ -1,17 +1,26 @@
 package com.lmh.spa.consumer.controller;
 
 
+import com.lmh.spa.consumer.topic.TestTopic;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.messaging.MessageHeaders;
+import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
 @RestController
+@Slf4j
+@EnableBinding(TestTopic.class)
 public class TestController {
     @Autowired
     private DiscoveryClient discoveryClient;
@@ -21,6 +30,9 @@ public class TestController {
 
     @Autowired
     private LoadBalancerClient loadBalancerClient;
+
+    @Autowired
+    private TestTopic testTopic;
 
     @GetMapping("/hello")
     public String hello(String name) {
@@ -42,5 +54,19 @@ public class TestController {
         String response = restTemplate.getForObject(targetUrl, String.class);
         // 返回结果
         return "consumer:" + response;
+    }
+
+    /**
+     * 消息生产接口
+     */
+    @GetMapping("/sendMessage")
+    public String messageWithMQ(@RequestParam String message,@RequestParam String version) {
+        log.info("Send: " + message);
+        testTopic.output().send(MessageBuilder.withPayload(message)
+                .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
+                .setHeader("x-delay", 5000)
+                .setHeader("version", version)
+                .build());
+        return "ok";
     }
 }
